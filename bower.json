@@ -1,0 +1,22 @@
+{
+  "name": "codeschool-ember",
+  "version": "0.0.0",
+  "authors": [
+    "Jason Benn <jasoncbenn@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0",
+    "ember-data": "~0.0.14",
+    "bootstrap": "~3.3.1"
+  }
+}
