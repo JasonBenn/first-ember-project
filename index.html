@@ -9,8 +9,58 @@
   <script src="bower_components/ember-data/ember-data.js"></script>
   <script src="app/app.js"></script>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="app/app.css">
 </head>
 <body>
+  <script type="text/x-handlebars" data-template-name="application">
+    <div class="navbar">
+      <!-- // fucking magic! these aren't <a>'s but still have click handlers. -->
+      {{#link-to 'index' tagName="li" class="navbar-brand"}}Homepage{{/link-to}}
+      {{#link-to 'about' tagName="li" class="navbar-brand"}}About Us{{/link-to}}
+      {{#link-to 'matches' tagName="li" class="navbar-brand"}}Potential Matches!{{/link-to}}
+    </div>
+    <div class="container">{{outlet}}</div>
+    <footer class="container"></footer>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="index">
+    <h1>Supsies and welcome home, {{name}}</h1>
+    <!-- // notice the lack of # in front of this helper. -->
+    <img {{bind-attr src="imageSrc"}} />
+    <p>Rendered at {{time}}</p>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="about">
+    <h1>About</h1>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="matches">
+    <div class="col-md-3">
+      <h2>Matches!!</h2>
+      <ul>
+        {{#each}}
+        <li>
+          {{#link-to 'match' this._id}}{{name}}{{/link-to}}
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+
+    <div class="col-md-9">
+      {{outlet}}
+    </div>
+  </script>
   
+  <script type="text/x-handlebars" data-template-name="matches/index">
+    <h2>Pick one of the {{numMatches}} matches on the left</h2>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="match">
+    <h2>{{name}}</h2>
+    <p>{{bio}}</p>
+    {{#each photos}}
+      <img {{bind-attr src='url'}} />
+    {{/each}}
+  </script>
 </body>
 </html>

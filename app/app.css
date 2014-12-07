@@ -1,0 +1,12 @@
+li {
+  list-style: none;
+}
+
+.navbar li:hover {
+  cursor: pointer;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
